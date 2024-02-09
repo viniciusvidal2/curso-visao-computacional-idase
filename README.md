@@ -4,7 +4,7 @@ All the scripts and packages to be used throughout the classes, and for activiti
 ## Install dependencies
 To install the dependencies, run the following in a terminal from inside this folder:
 
-"""
+'''
 sudo apt-get install -y python3-pip
 sudo pip3 install -r requirements.txt
-"""
+'''
