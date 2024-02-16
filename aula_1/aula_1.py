@@ -46,8 +46,8 @@ def main():
     print("Diretório do arquivo atual:", diretorio_atual)
     
     # Carrega as imagens
-    imagem_1 = cv2.imread(os.path.join(diretorio_atual, '../fountain_dataset/0000.png'))
-    imagem_2 = cv2.imread(os.path.join(diretorio_atual, '../fountain_dataset/0001.png'))
+    imagem_1 = cv2.imread(os.path.join(diretorio_atual, '../datasets/fountain/0000.png'))
+    imagem_2 = cv2.imread(os.path.join(diretorio_atual, '../datasets/fountain/0001.png'))
     
     # Mostra as imagens de entrada
     print("Analisando imagens iniciais ...")

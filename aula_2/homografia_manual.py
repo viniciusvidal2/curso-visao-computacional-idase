@@ -31,11 +31,6 @@ def stitching_com_mascara(im1, im2):
 
     # Aplicar a máscara invertida na imagem2
     im2_mascarada = cv2.bitwise_and(im2, im2, mask=mascara)
-    
-    cv2.imshow('Imagem 2 com Descritores', im2_mascarada)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-    
 
     # Somar a imagem1 com a imagem2 mascarada
     resultado = cv2.add(im1, im2_mascarada)

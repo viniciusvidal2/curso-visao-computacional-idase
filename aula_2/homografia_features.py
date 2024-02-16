@@ -67,10 +67,8 @@ def stitching_com_mascara(im1, im2, H):
     Ht = np.array([[1, 0, t[0]], [0, 1, t[1]], [0, 0, 1]])
 
     im1_homografia = cv2.warpPerspective(im1, Ht @ H, (xmax - xmin, ymax - ymin))
-    im1_homografia[t[1]:h1 + t[1], t[0]:w1 + t[0]] = im2
+    im1_homografia[t[1]:h2 + t[1], t[0]:w2 + t[0]] = im2
     
-    
-    # blended_img = im2 * mask + im1_homografia * (1 - mask)
     return im1_homografia.astype(np.uint8)
   
 def main():
