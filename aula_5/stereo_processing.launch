@@ -13,12 +13,12 @@
 
   <!-- Launch stereo_image_proc -->
   <group ns="stereo">
-    <node name="stereo_image_proc" pkg="stereo_image_proc" type="stereo_image_proc" output="screen">
+    <node name="stereo_image_proc" pkg="stereo_image_proc" type="stereo_image_proc">
         <param name="approximate_sync" value="true"/>
         <param name="manager" value="manager"/>
         <param name="image_transport" value="raw"/> 
         <param name="queue_size" value="10"/> 
-  <rosparam command="load" file="$(env HOME)/curso-visao-computacional-idase/ros/stereo_params.yaml"/>
+        <rosparam command="load" file="$(env HOME)/curso-visao-computacional-idase/ros/stereo_params.yaml"/>
     </node>
   </group>
 

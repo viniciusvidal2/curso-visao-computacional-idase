@@ -1,0 +1,13 @@
+<launch>
+
+  <!-- Your rosbag file path -->
+  <arg name="rosbag_path" default="$(env HOME)/curso-visao-computacional-idase/ros/kitti_2011_10_03_drive_0027_synced_small.bag -r 0.1"/>
+
+  <!-- Play the rosbag with remapped topics -->
+  <node name="rosbag" pkg="rosbag" type="play" args="$(arg rosbag_path)" output="screen">
+  </node>
+
+  <!-- Launch RViz with stereo configuration -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(env HOME)/curso-visao-computacional-idase/ros/slam.rviz"/>
+
+</launch>
