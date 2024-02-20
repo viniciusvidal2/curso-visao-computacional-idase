@@ -164,3 +164,4 @@ ros_ws/build/
 ros_ws/devel/
 .catkin_workspace
 ros_ws/src/CMakeLists.txt
+*.bag

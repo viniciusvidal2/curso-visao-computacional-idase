@@ -1,0 +1,9 @@
+approximate_sync: true
+queue_size: 10
+use_rectified: true
+prefilter_size: 19
+correlation_window_size: 23
+min_disparity: 0
+uniqueness_ratio: 8.0
+texture_threshold: 0
+disparity_range: 100

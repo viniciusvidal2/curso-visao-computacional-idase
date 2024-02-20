@@ -5,10 +5,6 @@ from scipy.spatial.transform import Rotation
 import copy
 
 
-def angulos_euler_para_matriz_rotacao(angulos_euler):
-    rotacao = Rotation.from_euler('xyz', angulos_euler, degrees=True)
-    return rotacao.as_matrix()
-
 if __name__ == "__main__":
     # Carregar a nuvem de pontos
     diretorio_atual = os.path.dirname(os.path.realpath(__file__))
@@ -31,21 +27,28 @@ if __name__ == "__main__":
     angulos_euler = [45, 30, 60]  # Ângulos em graus para as sequências XYZ
 
     # Criar a matriz de rotação a partir dos ângulos de Euler
-    matriz_rotacao = angulos_euler_para_matriz_rotacao(angulos_euler)
+    matriz_rotacao_1 = Rotation.from_euler('xyz', angulos_euler, degrees=True).as_matrix()
 
     # Criar a matriz homogênea
     matriz_homogenea = np.identity(4)
-    matriz_homogenea[:3, :3] = matriz_rotacao
+    matriz_homogenea[:3, :3] = matriz_rotacao_1
     
     # Adicionar translação
-    # translacao = np.array([1, 0, 0])
-    # matriz_homogenea[:3, 3] = translacao
+    translacao = np.array([1, 0, 0])
+    matriz_homogenea[:3, 3] = translacao
 
     # Transformar a nuvem de pontos usando a matriz homogênea
     pcd.transform(matriz_homogenea)
+    
+    # Aplicar segunda rotação para comparar
+    pcd2 = copy.deepcopy(pcd_original)
+    matriz_rotacao_2 = Rotation.from_euler('XYZ', angulos_euler, degrees=True).as_matrix()
+    matriz_homogenea[:3, :3] = matriz_rotacao_2
+    pcd2.transform(matriz_homogenea)
 
     # Visualizar a nuvem de pontos transformada
     o3d.visualization.draw_geometries([pcd_original.paint_uniform_color([1.0, 0, 0]), 
                                        pcd.paint_uniform_color([0, 1.0, 0]),
+                                       pcd2.paint_uniform_color([0, 1.0, 1.0]),
                                        frame_coordenado], window_name="Nuvem de Pontos Transformada")
     
